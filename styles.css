@@ -1,0 +1,25 @@
+.pixel {
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 0;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons {
+    border: black 2px solid;
+    width: 20%;
+    height: 70vh;
+}
+
+.container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 500px;
+    height: 500px;
+    box-sizing: border-box;
+    border: black solid 10px;
+}
