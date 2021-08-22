@@ -13,4 +13,7 @@ for (i = 0; i < totalPixels; i++) {
     pixel.classList.add(`pixel-${i}`);
     containerDiv.appendChild(pixel);
     console.log(i)
+    pixel.addEventListener('mouseover', e => {
+        e.target.style.cssText = "background-color: black;";
+    });
 }
