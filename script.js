@@ -35,6 +35,10 @@ const scaleIndicator = document.querySelector('.scale-indicator');
 // Color picker
 const colorPickerElement = document.getElementById('color-picker');
 
+// Reset Btn
+const resetBtn = document.getElementById('reset');
+
+
 let colorValue = DEFAULTCOLOR;
 colorPickerElement.value = colorValue;
 
@@ -54,7 +58,11 @@ scaleInput.addEventListener('mousemove', e => {
 
 })
 
+resetBtn.addEventListener('click', e => {
+    updateGrid(DEFAULTSCALE);
+})
+
 // Default Scale number
 scaleInput.value = DEFAULTSCALE;
 scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
-updateGrid(scaleInput.value);
+updateGrid(DEFAULTSCALE);
