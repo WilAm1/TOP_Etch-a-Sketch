@@ -10,6 +10,15 @@
 }
 
 .container {
+    width: 530px;
+    height: 530px;
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pixel-container {
     display: grid;
     width: 500px;
     height: 500px;
@@ -21,7 +30,7 @@
     box-sizing: border-box;
     border: .8px solid black;
     margin: 0;
-    background-color: blue;
+    background-color: white;
     /* height: 10px;
     width: 10px; */
 }
