@@ -39,6 +39,10 @@ updateGrid(scaleInput.value);
 
 scaleInput.addEventListener('change', e => {
     const scaleValue = e.target.value;
-    scaleIndicator.textContent = scaleValue;
     updateGrid(scaleValue);
 });
+
+scaleInput.addEventListener('mousemove', e => {
+    scaleIndicator.textContent = e.target.value;
+
+})
