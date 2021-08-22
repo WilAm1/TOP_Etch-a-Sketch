@@ -6,11 +6,40 @@ function fillContainer(container, totalPixels) {
         const pixel = document.createElement('div');
         pixel.classList.add('pixel');
         pixel.classList.add(`pixel-${i}`);
-        pixel.addEventListener('mouseover', e => {
-            e.target.style.cssText = `background-color: ${colorValue};`;
-        });
+
         container.appendChild(pixel);
     }
+}
+
+function makeColor(e) {
+    e.target.style.cssText = `background-color: ${colorValue};`;
+}
+
+function makeRainbow(e) {
+    // 
+}
+
+function useColorMode() {
+    colorModeBtn.classList.add('active');
+    rainbowModeBtn.classList.remove('active');
+
+    const pixels = Array.from(document.querySelectorAll('.pixel'));
+    pixels.forEach(pixel => {
+        pixel.removeEventListener('mouseover', makeRainbow);
+        pixel.addEventListener('mouseover', makeColor);
+    })
+}
+
+function useRainbowMode() {
+    colorModeBtn.classList.remove('active');
+    rainbowModeBtn.classList.add('active');
+
+    const pixels = Array.from(document.querySelectorAll('.pixel'));
+    pixels.forEach(pixel => {
+        pixel.removeEventListener('mouseover', makeColor);
+
+        pixel.addEventListener('mouseover', makeRainbow);
+    })
 }
 
 function updateGrid(numPixels) {
@@ -27,8 +56,6 @@ function updateGrid(numPixels) {
     containerDiv.appendChild(pixelContainer);
     // Fills the container with individual pixels
     fillContainer(pixelContainer, totalPixels);
-
-
 }
 
 // Divs
@@ -38,6 +65,9 @@ const scaleInput = document.getElementById('scale');
 const scaleIndicator = document.querySelector('.scale-indicator');
 // Color picker
 const colorPickerElement = document.getElementById('color-picker');
+// Color and Rainbow mode
+const colorModeBtn = document.getElementById('color-mode'),
+    rainbowModeBtn = document.getElementById('rainbow-mode');
 // Reset Btn
 const resetBtn = document.getElementById('reset');
 
@@ -71,6 +101,7 @@ function makeDefault() {
     scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
     // Default Scale number
     updateGrid(DEFAULTSCALE);
+    useColorMode();
 
 }
 
