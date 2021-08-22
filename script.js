@@ -1,3 +1,7 @@
+const DEFAULTCOLOR = '#000000',
+    DEFAULTSCALE = 10;
+
+
 function updateGrid(numPixels) {
     // Will remove the container div child if it has 
     containerDiv.removeChild(containerDiv.firstChild);
@@ -16,12 +20,11 @@ function updateGrid(numPixels) {
         pixel.classList.add('pixel');
         pixel.classList.add(`pixel-${i}`);
         pixel.addEventListener('mouseover', e => {
-            e.target.style.cssText = "background-color: black;";
+            e.target.style.cssText = `background-color: ${colorValue};`;
         });
         pixelContainer.appendChild(pixel);
     }
 }
-
 
 // Divs
 const containerDiv = document.getElementById('container');
@@ -32,10 +35,18 @@ const scaleInput = document.getElementById('scale');
 const scaleIndicator = document.querySelector('.scale-indicator');
 
 // Default Scale number
-scaleInput.value = 10;
-scaleIndicator.textContent = scaleInput.value;
+scaleInput.value = DEFAULTSCALE;
+scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
 updateGrid(scaleInput.value);
 
+// Color picker
+const colorPickerElement = document.getElementById('color-picker');
+let colorValue = DEFAULTCOLOR;
+colorPickerElement.value = colorValue;
+
+colorPickerElement.addEventListener('change', e => {
+    colorValue = e.target.value;
+});
 
 scaleInput.addEventListener('change', e => {
     const scaleValue = e.target.value;
@@ -43,6 +54,6 @@ scaleInput.addEventListener('change', e => {
 });
 
 scaleInput.addEventListener('mousemove', e => {
-    scaleIndicator.textContent = e.target.value;
+    scaleIndicator.textContent = `${e.target.value} X ${e.target.value}`;
 
 })
