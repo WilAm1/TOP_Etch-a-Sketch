@@ -10,8 +10,8 @@
 }
 
 .container {
-    width: 530px;
-    height: 530px;
+    width: 40vw;
+    height: 85vh;
     background-color: burlywood;
     display: flex;
     justify-content: center;
@@ -28,7 +28,7 @@
 
 .pixel {
     box-sizing: border-box;
-    border: .8px solid black;
+    /* border: .8px solid black; */
     margin: 0;
     background-color: white;
     /* height: 10px;
