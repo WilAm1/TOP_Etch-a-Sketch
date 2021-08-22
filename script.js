@@ -13,10 +13,14 @@ function fillContainer(container, totalPixels) {
 
 function makeColor(e) {
     e.target.style.cssText = `background-color: ${colorValue};`;
+    console.log('he1')
 }
 
 function makeRainbow(e) {
-    // 
+    // randomizes the color. Found on the internet. 
+    randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    e.target.style = `background-color: #${randomColor}`;
+    console.log(randomColor)
 }
 
 function useColorMode() {
@@ -88,6 +92,9 @@ scaleInput.addEventListener('mousemove', e => {
     scaleIndicator.textContent = `${e.target.value} X ${e.target.value}`;
 
 })
+
+colorModeBtn.onclick = useColorMode;
+rainbowModeBtn.onclick = useRainbowMode;
 
 resetBtn.addEventListener('click', e => {
     updateGrid(DEFAULTSCALE);
