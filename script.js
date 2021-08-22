@@ -1,6 +1,17 @@
 const DEFAULTCOLOR = '#000000',
     DEFAULTSCALE = 10;
 
+function fillContainer(container, totalPixels) {
+    for (i = 0; i < totalPixels; i++) {
+        const pixel = document.createElement('div');
+        pixel.classList.add('pixel');
+        pixel.classList.add(`pixel-${i}`);
+        pixel.addEventListener('mouseover', e => {
+            e.target.style.cssText = `background-color: ${colorValue};`;
+        });
+        container.appendChild(pixel);
+    }
+}
 
 function updateGrid(numPixels) {
     // Will remove the container div child if it has 
@@ -15,15 +26,9 @@ function updateGrid(numPixels) {
     // Adds created div to container div
     containerDiv.appendChild(pixelContainer);
     // Fills the container with individual pixels
-    for (i = 0; i < totalPixels; i++) {
-        const pixel = document.createElement('div');
-        pixel.classList.add('pixel');
-        pixel.classList.add(`pixel-${i}`);
-        pixel.addEventListener('mouseover', e => {
-            e.target.style.cssText = `background-color: ${colorValue};`;
-        });
-        pixelContainer.appendChild(pixel);
-    }
+    fillContainer(pixelContainer, totalPixels);
+
+
 }
 
 // Divs
@@ -31,16 +36,12 @@ const containerDiv = document.getElementById('container');
 // Scale btn
 const scaleInput = document.getElementById('scale');
 const scaleIndicator = document.querySelector('.scale-indicator');
-
 // Color picker
 const colorPickerElement = document.getElementById('color-picker');
-
 // Reset Btn
 const resetBtn = document.getElementById('reset');
 
-
 let colorValue = DEFAULTCOLOR;
-colorPickerElement.value = colorValue;
 
 
 // Event Listeners
@@ -60,9 +61,18 @@ scaleInput.addEventListener('mousemove', e => {
 
 resetBtn.addEventListener('click', e => {
     updateGrid(DEFAULTSCALE);
+    makeDefault()
 })
 
-// Default Scale number
-scaleInput.value = DEFAULTSCALE;
-scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
-updateGrid(DEFAULTSCALE);
+function makeDefault() {
+    scaleInput.value = DEFAULTSCALE;
+    colorPickerElement.value = colorValue;
+
+    scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
+    // Default Scale number
+    updateGrid(DEFAULTSCALE);
+
+}
+
+
+makeDefault()
