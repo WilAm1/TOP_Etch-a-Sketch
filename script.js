@@ -28,22 +28,18 @@ function updateGrid(numPixels) {
 
 // Divs
 const containerDiv = document.getElementById('container');
-
-
 // Scale btn
 const scaleInput = document.getElementById('scale');
 const scaleIndicator = document.querySelector('.scale-indicator');
 
-// Default Scale number
-scaleInput.value = DEFAULTSCALE;
-scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
-updateGrid(scaleInput.value);
-
 // Color picker
 const colorPickerElement = document.getElementById('color-picker');
+
 let colorValue = DEFAULTCOLOR;
 colorPickerElement.value = colorValue;
 
+
+// Event Listeners
 colorPickerElement.addEventListener('change', e => {
     colorValue = e.target.value;
 });
@@ -57,3 +53,8 @@ scaleInput.addEventListener('mousemove', e => {
     scaleIndicator.textContent = `${e.target.value} X ${e.target.value}`;
 
 })
+
+// Default Scale number
+scaleInput.value = DEFAULTSCALE;
+scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
+updateGrid(scaleInput.value);
