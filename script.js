@@ -1,12 +1,19 @@
 const DEFAULTCOLOR = '#000000',
     DEFAULTSCALE = 10;
 
+function useDefault() {
+    scaleInput.value = DEFAULTSCALE;
+    colorPickerElement.value = colorValue;
+    scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
+    updateGrid(DEFAULTSCALE);
+    useColorMode();
+}
+
 function fillContainer(container, totalPixels) {
     for (i = 0; i < totalPixels; i++) {
         const pixel = document.createElement('div');
         pixel.classList.add('pixel');
         pixel.classList.add(`pixel-${i}`);
-
         container.appendChild(pixel);
     }
 }
@@ -18,14 +25,12 @@ function getPixelArray() {
 
 function makeColor(e) {
     e.target.style.cssText = `background-color: ${colorValue};`;
-    console.log('he1')
 }
 
 function makeRainbow(e) {
     // randomizes the color. Found on the internet. 
     randomColor = Math.floor(Math.random() * 16777215).toString(16);
     e.target.style = `background-color: #${randomColor}`;
-    console.log(randomColor)
 }
 
 function makeWhite(e) {
@@ -41,7 +46,7 @@ function useColorMode() {
     pixels.forEach(pixel => {
         pixel.removeEventListener('mouseover', makeRainbow);
         pixel.addEventListener('mouseover', makeColor);
-    })
+    });
 }
 
 function useRainbowMode() {
@@ -55,13 +60,14 @@ function useRainbowMode() {
         pixel.removeEventListener('mouseover', makeWhite);
 
         pixel.addEventListener('mouseover', makeRainbow);
-    })
+    });
 }
 
 function useEraser() {
     colorModeBtn.classList.remove('active');
     rainbowModeBtn.classList.remove('active');
     eraserBtn.classList.add('active');
+
     const pixels = getPixelArray();
     pixels.forEach(pixel => {
         pixel.removeEventListener('mouseover', makeColor);
@@ -113,7 +119,6 @@ const resetBtn = document.getElementById('reset');
 
 let colorValue = DEFAULTCOLOR;
 
-
 // Event Listeners
 colorPickerElement.addEventListener('change', e => {
     colorValue = e.target.value;
@@ -131,25 +136,13 @@ scaleInput.addEventListener('mousemove', e => {
 
 colorModeBtn.onclick = useColorMode;
 rainbowModeBtn.onclick = useRainbowMode;
-
 borderBtn.onclick = toggleBorder;
 eraserBtn.onclick = useEraser;
 
 resetBtn.addEventListener('click', e => {
     updateGrid(DEFAULTSCALE);
-    makeDefault()
+    useDefault()
 })
 
-function makeDefault() {
-    scaleInput.value = DEFAULTSCALE;
-    colorPickerElement.value = colorValue;
-
-    scaleIndicator.textContent = `${scaleInput.value} X ${scaleInput.value}`;
-    // Default Scale number
-    updateGrid(DEFAULTSCALE);
-    useColorMode();
-
-}
-
-
-makeDefault()
+// On page load will run the default settings
+window.onload = useDefault;
