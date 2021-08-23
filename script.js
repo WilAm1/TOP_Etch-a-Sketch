@@ -148,5 +148,8 @@ resetBtn.addEventListener('click', e => {
     useDefault();
 })
 
+// Add time
+timeSpan = document.getElementById('time');
+timeSpan.textContent = new Date().getFullYear();
 // On page load will run the default settings
 window.onload = useDefault;
