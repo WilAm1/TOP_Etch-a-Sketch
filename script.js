@@ -11,6 +11,11 @@ function fillContainer(container, totalPixels) {
     }
 }
 
+function getPixelArray() {
+    const pixels = Array.from(document.querySelectorAll('.pixel'));
+    return pixels
+}
+
 function makeColor(e) {
     e.target.style.cssText = `background-color: ${colorValue};`;
     console.log('he1')
@@ -23,11 +28,16 @@ function makeRainbow(e) {
     console.log(randomColor)
 }
 
+function makeWhite(e) {
+    e.target.style.backgroundColor = 'white';
+}
+
 function useColorMode() {
     colorModeBtn.classList.add('active');
     rainbowModeBtn.classList.remove('active');
+    eraserBtn.classList.remove('active');
 
-    const pixels = Array.from(document.querySelectorAll('.pixel'));
+    const pixels = getPixelArray();
     pixels.forEach(pixel => {
         pixel.removeEventListener('mouseover', makeRainbow);
         pixel.addEventListener('mouseover', makeColor);
@@ -37,12 +47,33 @@ function useColorMode() {
 function useRainbowMode() {
     colorModeBtn.classList.remove('active');
     rainbowModeBtn.classList.add('active');
+    eraserBtn.classList.remove('active');
 
-    const pixels = Array.from(document.querySelectorAll('.pixel'));
+    const pixels = getPixelArray();
     pixels.forEach(pixel => {
         pixel.removeEventListener('mouseover', makeColor);
+        pixel.removeEventListener('mouseover', makeWhite);
 
         pixel.addEventListener('mouseover', makeRainbow);
+    })
+}
+
+function useEraser() {
+    colorModeBtn.classList.remove('active');
+    rainbowModeBtn.classList.remove('active');
+    eraserBtn.classList.add('active');
+    const pixels = getPixelArray();
+    pixels.forEach(pixel => {
+        pixel.removeEventListener('mouseover', makeColor);
+        pixel.removeEventListener('mouseover', makeRainbow);
+        pixel.addEventListener('mouseover', makeWhite);
+    })
+}
+
+function toggleBorder() {
+    const pixels = getPixelArray();
+    pixels.forEach(pixel => {
+        pixel.classList.toggle('pixel-border');
     })
 }
 
@@ -60,6 +91,7 @@ function updateGrid(numPixels) {
     containerDiv.appendChild(pixelContainer);
     // Fills the container with individual pixels
     fillContainer(pixelContainer, totalPixels);
+    useColorMode();
 }
 
 // Divs
@@ -72,6 +104,10 @@ const colorPickerElement = document.getElementById('color-picker');
 // Color and Rainbow mode
 const colorModeBtn = document.getElementById('color-mode'),
     rainbowModeBtn = document.getElementById('rainbow-mode');
+// Eraser
+const eraserBtn = document.getElementById('eraser-btn');
+// With Border 
+const borderBtn = document.getElementById('border-btn');
 // Reset Btn
 const resetBtn = document.getElementById('reset');
 
@@ -95,6 +131,9 @@ scaleInput.addEventListener('mousemove', e => {
 
 colorModeBtn.onclick = useColorMode;
 rainbowModeBtn.onclick = useRainbowMode;
+
+borderBtn.onclick = toggleBorder;
+eraserBtn.onclick = useEraser;
 
 resetBtn.addEventListener('click', e => {
     updateGrid(DEFAULTSCALE);
