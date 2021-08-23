@@ -1,4 +1,4 @@
-const DEFAULTCOLOR = '#000000',
+const DEFAULTCOLOR = '#112D4E',
     DEFAULTSCALE = 10;
 
 function useDefault() {
@@ -34,7 +34,7 @@ function makeRainbow(e) {
 }
 
 function makeWhite(e) {
-    e.target.style.backgroundColor = 'white';
+    e.target.style.backgroundColor = '#F9F7F7';
 }
 
 function useColorMode() {
