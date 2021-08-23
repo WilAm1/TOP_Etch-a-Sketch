@@ -21,16 +21,25 @@
                 <p class="scale-indicator"></p>
                 <input type="range" id="scale" name="scale" min="1" max="64" step="1">
             </div>
-            <div class="rainbow-div btn-div">
+            <div class="color-picker-div btn-div">
                 <label for="color-picker">Pen Color</label>
                 <input type="color" id="color-picker" name="color" value="#000000">
             </div>
-            <div class="choice-mode-div">
+            <div class="choice-color-div">
                 <button id="color-mode" class="">Color Mode</button>
-                <button id="rainbow-mode">Rainbow Mode</button>
+                <button type="button" id="rainbow-mode">Rainbow Mode</button>
             </div>
+
+            <div class="eraser-div">
+                <button type="button">Eraser</button>
+            </div>
+
+            <div class="with-border-div">
+                <button type="button" id="border-btn">With Borders</button>
+            </div>
+
             <div class="reset-div btn-div">
-                <button id="reset">Reset Board</button>
+                <button type="button" id="reset">Reset Board</button>
             </div>
         </div>
 
