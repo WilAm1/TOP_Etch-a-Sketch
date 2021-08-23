@@ -13,14 +13,12 @@ body {
 
 /* Structure */
 
+h1 {}
+
 .title-div {
     padding: 10vh 0;
     margin-bottom: 5vh;
-    background-color: #DBE2EF;
-    color: #3F72AF;
-    border-bottom-left-radius: 13%;
-    border-bottom-right-radius: 13%;
-    border: solid black 1px;
+    background-color: #F9F7F7;
 }
 
 .main-content {
@@ -65,8 +63,8 @@ body {
 }
 
 .pixel-border {
-    border-bottom: .1px solid #3F72AF;
-    border-right: .1px solid #3F72AF;
+    border-bottom: .1px solid #DBE2EF;
+    border-right: .1px solid #DBE2EF;
 }
 
 

@@ -85,6 +85,8 @@ function toggleBorder() {
 }
 
 function updateGrid(numPixels) {
+    borderBtn.classList.remove('active');
+
     // Will remove the container div child if it has 
     containerDiv.removeChild(containerDiv.firstChild);
     const totalPixels = numPixels ** 2;
@@ -141,9 +143,9 @@ borderBtn.onclick = toggleBorder;
 eraserBtn.onclick = useEraser;
 
 resetBtn.addEventListener('click', e => {
+    borderBtn.classList.remove('active');
     updateGrid(DEFAULTSCALE);
     useDefault();
-    resetBtn.classList.remove('active');
 })
 
 // On page load will run the default settings
