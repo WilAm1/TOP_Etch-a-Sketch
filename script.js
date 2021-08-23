@@ -77,6 +77,7 @@ function useEraser() {
 }
 
 function toggleBorder() {
+    borderBtn.classList.toggle('active');
     const pixels = getPixelArray();
     pixels.forEach(pixel => {
         pixel.classList.toggle('pixel-border');
@@ -141,7 +142,8 @@ eraserBtn.onclick = useEraser;
 
 resetBtn.addEventListener('click', e => {
     updateGrid(DEFAULTSCALE);
-    useDefault()
+    useDefault();
+    resetBtn.classList.remove('active');
 })
 
 // On page load will run the default settings

@@ -90,6 +90,22 @@ body {
     font-weight: bolder;
     color: #112D4E;
     border-radius: 25px;
+    margin: 0 1em;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn.active {
+    background-color: #112D4E;
+    color: #DBE2EF;
+    border: solid 2px #F9F7F7;
+}
+
+#reset:active {
+    color: #F9F7F7;
+    background-color: #112D4E;
 }
 
 
