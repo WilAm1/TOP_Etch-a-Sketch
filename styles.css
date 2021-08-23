@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    color: #112D4E;
 }
 
 body {
@@ -41,8 +42,8 @@ body {
 }
 
 .container {
-    width: 40vw;
-    height: 85vh;
+    width: 550px;
+    height: 550px;
     background-color: #F9F7F7;
     display: flex;
     justify-content: center;
@@ -82,11 +83,6 @@ body {
     align-items: center;
 }
 
-
-/* .choice-color-div>button {
-    margin: 0 1rem;
-} */
-
 .btn {
     background-color: #F9F7F7;
     border: solid 1px #112D4E;
@@ -94,4 +90,13 @@ body {
     font-weight: bolder;
     color: #112D4E;
     border-radius: 25px;
+}
+
+
+/* Color Picker */
+
+#color-picker {
+    border: solid 1px #112D4E;
+    width: 100%;
+    padding: 5px;
 }
